@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='stock_style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='settings.css') }}">
+<title>InventoryHub - Smart Inventory Management Made Simple</title>
+{% endblock %}
+
+{% block body %}
+<div class="main-content">
+    <div class="header">
+        <div class="title">Settings</div>
+        <div class="header-right">
+            <div class="notification">
+                <i class="fas fa-bell"></i>
+                <div class="notification-dot"></div>
+            </div>
+            <div class="profile">
+                <img src="/api/placeholder/36/36" alt="Profile">
+            </div>
+        </div>
+    </div>
+    
+    <div class="subtitle">Manage your account and application preferences</div>
+    
+    <!-- Tab navigation -->
+    <div class="tab-navigation">
+        <a href="{{ url_for('settings', tab='profile') }}" class="tab-link {% if active_tab == 'profile' %}active{% endif %}">Profile</a>
+        <a href="{{ url_for('settings', tab='categories') }}" class="tab-link {% if active_tab == 'categories' %}active{% endif %}">Categories</a>
+        <a href="{{ url_for('settings', tab='suppliers') }}" class="tab-link {% if active_tab == 'suppliers' %}active{% endif %}">Suppliers</a>
+    </div>
+    
+    <!-- Content area that changes based on which tab is active -->
+    {% if active_tab == 'profile' %}
+    <form method="POST">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="{{ user.email }}">
+    </div>
+
+    <div class="form-group">
+        <label for="display_name">Display Name</label>
+        <input type="text" name="display_name" id="display_name" value="{{ user.username }}">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="••••••••">
+        <div class="form-help">Leave blank to keep your current password.</div>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-primary">Save Changes</button>
+        <a href="{{ url_for('logout') }}" class="btn-primary">Logout</a>
+    </div>
+</form>
+
+    
+    {% elif active_tab == 'categories' %}
+    <div class="settings-section">
+        <div class="settings-card">
+            <div class="settings-header">
+                <i class="fas fa-tags settings-icon"></i>
+                <div>
+                    <div class="settings-title">Product Categories</div>
+                    <div class="settings-description">Manage product categories</div>
+                </div>
+            </div>
+            
+            <div class="table-header">
+                <div class="table-title">All Categories</div>
+                <button class="btn-primary">Add Category</button>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th class="actions-column">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Electronics</td>
+                        <td>Electronic devices and gadgets</td>
+                        <td class="actions-cell">
+                            <button class="btn-edit">Edit</button>
+                            <button class="btn-delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Furniture</td>
+                        <td>Office and home furniture</td>
+                        <td class="actions-cell">
+                            <button class="btn-edit">Edit</button>
+                            <button class="btn-delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Appliances</td>
+                        <td>Kitchen and home appliances</td>
+                        <td class="actions-cell">
+                            <button class="btn-edit">Edit</button>
+                            <button class="btn-delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Audio</td>
+                        <td>Audio equipment and accessories</td>
+                        <td class="actions-cell">
+                            <button class="btn-edit">Edit</button>
+                            <button class="btn-delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lighting</td>
+                        <td>Lamps and lighting solutions</td>
+                        <td class="actions-cell">
+                            <button class="btn-edit">Edit</button>
+                            <button class="btn-delete">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    {% elif active_tab == 'suppliers' %}
+    <div class="settings-section">
+        <div class="settings-card">
+            <div class="settings-header">
+                <i class="fas fa-building settings-icon"></i>
+                <div>
+                    <div class="settings-title">Suppliers</div>
+                    <div class="settings-description">Manage your suppliers</div>
+                </div>
+            </div>
+            
+            <div class="table-header">
+                <div class="table-title">All Suppliers</div>
+                <button class="btn-primary">Add Supplier</button>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Company</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th class="actions-column">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+    {% if suppliers %}
+        {% for s in suppliers %}
+            <tr>
+                <td>{{ s.id}}</td>
+                <td>{{ s.name }}</td>
+                <td>{{ s.contact_info.split(',')[0] if s.contact_info else '' }}</td>
+                <td>{{s.address}}</td>
+                <td class="actions-cell">
+                    <button class="btn-edit">Edit</button>
+                    <button class="btn-delete">Delete</button>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr><td colspan="5" style="text-align:center;">No suppliers found.</td></tr>
+    {% endif %}
+</tbody>
+
+            </table>
+        </div>
+    </div>
+    {% endif %}
+    
+    
+</div>
+{% endblock %}

@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InventoryHub - Smart Inventory Management Made Simple</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing_style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-box-archive logo-icon"></i>
+            Inventory Hub</div>
+        <nav>
+            <a href="#">Features</a>
+            <a href="#">How It Works</a>
+            <a href="#">Testimonials</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="{{ url_for('login') }}" class="login-btn">Login</a>
+            <button class="get-started-btn">Get Started</button>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <div class="hero-badge">✨ Streamline Your Inventory Today</div>
+            <h1>Smart Inventory Management Made <span class="highlight">Simple</span></h1>
+            <p>Take control of your inventory with our powerful, easy-to-use platform. Reduce costs, prevent stockouts, and boost efficiency.</p>
+            <div class="cta-buttons">
+                <button class="primary-btn">Start Free Trial</button>
+                <button class="secondary-btn">Schedule Demo</button>
+            </div>
+            <div class="trial-features">
+                <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>No credit card required</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Cancel anytime</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='dashB.png') }}" alt="InventoryPro Dashboard Preview">
+        </div>
+    </section>
+    
+    <!-- Main Features Headline -->
+    <section class="main-headline">
+        <h2>Everything You Need to Master Your Inventory</h2>
+        <p>Our comprehensive suite of tools gives you complete control over your inventory management process.</p>
+    </section>
+    
+    <!-- Features Grid -->
+    <section class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+            <div class="feature-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4263eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+            </div>
+            <h3>Real-time Stock Tracking</h3>
+            <p>Monitor inventory levels across multiple locations with real-time updates and notifications.</p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="feature-card">
+            <div class="feature-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4263eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+            </div>
+            <h3>Centralized Data Management</h3>
+            <p>Store all your product information, supplier details, and transaction history in one secure place.</p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="feature-card">
+            <div class="feature-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4263eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                    <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+            </div>
+            <h3>Powerful Analytics</h3>
+            <p>Make data-driven decisions with customizable reports and intelligent forecasting tools.</p>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="feature-card">
+            <div class="feature-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4263eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+            <h3>Advanced Search</h3>
+            <p>Quickly find products, orders, or suppliers with our powerful search and filtering capabilities.</p>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="feature-card">
+            <div class="feature-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4263eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                </svg>
+            </div>
+            <h3>Order Management</h3>
+            <p>Create purchase orders, track shipments, and manage reorder points automatically.</p>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="feature-card">
+            <div class="feature-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4263eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+            </div>
+            <h3>Document Generation</h3>
+            <p>Generate professional invoices, packing slips, and purchase orders with a few clicks.</p>
+        </div>
+        
+        <!-- Feature 7 -->
+        <div class="feature-card">
+            <div class="feature-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4263eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+            </div>
+            <h3>Multi-location Support</h3>
+            <p>Manage inventory across warehouses, stores, and fulfillment centers from one interface.</p>
+        </div>
+        
+        <!-- Feature 8 -->
+        <div class="feature-card">
+            <div class="feature-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4263eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+            </div>
+            <h3>Integration Ecosystem</h3>
+            <p>Connect seamlessly with your e-commerce platforms, accounting software, and shipping providers.</p>
+        </div>
+    </section>
+    
+    <!-- Steps Section -->
+    <section class="steps-section">
+        <h2>Get Started in Four Simple Steps</h2>
+        <p>Our streamlined onboarding process gets you up and running quickly so you can focus on your business.</p>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <h3>Sign Up for Free Trial</h3>
+                <p>Create your account in minutes with no credit card required.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <h3>Import Your Inventory</h3>
+                <p>Easily import your existing inventory data or start from scratch.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <h3>Customize Your Setup</h3>
+                <p>Configure categories, locations, and user permissions to match your needs.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">04</div>
+                <h3>Start Managing Inventory</h3>
+                <p>Begin tracking inventory, processing orders, and gaining insights.</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Transform Your Inventory Management?</h2>
+        <p>Join thousands of businesses that have optimized their inventory processes with our platform.</p>
+        <div class="cta-buttons-container">
+            <button class="cta-white-btn">Start Free Trial</button>
+            <button class="cta-outline-btn">Schedule Demo</button>
+        </div>
+        <div class="trial-text">No credit card required. 14-day free trial. Cancel anytime.</div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-branding">
+                <h3>InventoryHub</h3>
+                <p>A comprehensive inventory management solution designed to simplify your operations and boost efficiency across your supply chain.</p>
+                <div class="social-icons">
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </div>
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="link-column">
+                    <h4>PRODUCT</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4>COMPANY</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4>SUPPORT</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">API Status</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">© 2025 InventoryHub. All rights reserved.</div>
+            <div class="bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookies</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // main.js - InventoryPro Landing Page Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // ----- Navigation & Scroll Logic -----
+    const header = document.querySelector('header');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    // Sticky header on scroll
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Smooth scroll for navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // ----- Button Event Handlers -----
+    
+    // Get Started Button in header
+    const getStartedBtn = document.querySelector('.get-started-btn');
+    if (getStartedBtn) {
+        getStartedBtn.addEventListener('click', function() {
+            window.location.href = '/register';
+        });
+    }
+    
+    // Primary CTA - Start Free Trial
+    const startTrialBtns = document.querySelectorAll('.primary-btn, .cta-white-btn');
+    startTrialBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            window.location.href = '/register';
+        });
+    });
+    
+    // Secondary CTA - Schedule Demo
+    const scheduleDemoBtns = document.querySelectorAll('.secondary-btn, .cta-outline-btn');
+    scheduleDemoBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            openDemoModal();
+        });
+    });
+    
+    // ----- Modal Functionality -----
+    
+    // Create demo request modal dynamically
+    function createDemoModal() {
+        const modalHTML = `
+            <div id="demo-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2>Schedule a Demo</h2>
+                    <p>Fill out the form below and our team will contact you to schedule a personalized demo.</p>
+                    <form id="demo-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Business Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="company-size">Company Size</label>
+                            <select id="company-size" name="company-size">
+                                <option value="">Select company size</option>
+                                <option value="1-10">1-10 employees</option>
+                                <option value="11-50">11-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201-500">201-500 employees</option>
+                                <option value="501+">501+ employees</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Request Demo</button>
+                    </form>
+                </div>
+            </div>
+        `;
+        
+        const modalContainer = document.createElement('div');
+        modalContainer.innerHTML = modalHTML;
+        document.body.appendChild(modalContainer);
+        
+        // Add event listeners to the modal
+        const modal = document.getElementById('demo-modal');
+        const closeBtn = document.querySelector('.close-modal');
+        const demoForm = document.getElementById('demo-form');
+        
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        demoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitDemoRequest();
+        });
+    }
+    
+    // Open the demo request modal
+    function openDemoModal() {
+        const modal = document.getElementById('demo-modal');
+        if (!modal) {
+            createDemoModal();
+            document.getElementById('demo-modal').style.display = 'block';
+        } else {
+            modal.style.display = 'block';
+        }
+    }
+    
+    // Handle demo form submission
+    function submitDemoRequest() {
+        const form = document.getElementById('demo-form');
+        const formData = new FormData(form);
+        
+        // Display loading state
+        const submitBtn = form.querySelector('.submit-btn');
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+        
+        // Simulate API call with setTimeout
+        setTimeout(function() {
+            // In a real implementation, you would send data to your server
+            console.log('Demo request submitted with data:', Object.fromEntries(formData));
+            
+            // Show success message
+            form.innerHTML = `
+                <div class="success-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <h3>Thank You!</h3>
+                    <p>Your demo request has been submitted successfully. Our team will contact you within 1 business day to schedule your personalized demo.</p>
+                    <button class="close-success-btn">Close</button>
+                </div>
+            `;
+            
+            // Add event listener to close button
+            document.querySelector('.close-success-btn').addEventListener('click', function() {
+                document.getElementById('demo-modal').style.display = 'none';
+            });
+        }, 1500);
+    }
+    
+    // ----- Feature Cards Animation -----
+    
+    // Animate feature cards when they come into view
+    const featureCards = document.querySelectorAll('.feature-card');
+    
+    // Check if IntersectionObserver is supported
+    if ('IntersectionObserver' in window) {
+        const featureObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-feature');
+                    featureObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        featureCards.forEach(card => {
+            featureObserver.observe(card);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        featureCards.forEach(card => {
+            card.classList.add('animate-feature');
+        });
+    }
+    
+    // ----- Mobile Navigation Toggle -----
+    
+    // Add mobile menu toggle functionality
+    const mobileMenuBtn = document.createElement('button');
+    mobileMenuBtn.className = 'mobile-menu-toggle';
+    mobileMenuBtn.innerHTML = `
+        <span class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    `;
+    
+    header.appendChild(mobileMenuBtn);
+    
+    mobileMenuBtn.addEventListener('click', function() {
+        const nav = document.querySelector('nav');
+        nav.classList.toggle('mobile-menu-active');
+        this.classList.toggle('active');
+    });
+    
+    // ----- Newsletter Subscription -----
+    
+    // Add newsletter subscription to footer
+    const footerBranding = document.querySelector('.footer-branding');
+    
+    if (footerBranding) {
+        const newsletterHTML = `
+            <div class="newsletter-signup">
+                <h4>Subscribe to our newsletter</h4>
+                <p>Get the latest updates, news and product offers sent straight to your inbox.</p>
+                <form id="newsletter-form" class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        `;
+        
+        footerBranding.insertAdjacentHTML('beforeend', newsletterHTML);
+        
+        // Add event listener to the newsletter form
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value;
+            
+            // Simulate API call
+            console.log('Newsletter subscription for:', email);
+            
+            // Show success message
+            this.innerHTML = '<p class="newsletter-success">Thank you for subscribing!</p>';
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                this.innerHTML = `
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                `;
+            }, 3000);
+        });
+    }
+    
+    // ----- CSS for Dynamically Created Elements -----
+    
+    // Add necessary CSS for modal, animations, etc.
+    const dynamicStyles = document.createElement('style');
+    dynamicStyles.textContent = `
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .success-message svg {
+            margin-bottom: 15px;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .hamburger-icon {
+            display: block;
+            position: relative;
+            width: 24px;
+            height: 18px;
+        }
+        
+        .hamburger-icon span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #333;
+            border-radius: 2px;
+            transition: transform 0.25s ease-in-out;
+        }
+        
+        .hamburger-icon span:nth-child(1) {
+            top: 0;
+        }
+        
+        .hamburger-icon span:nth-child(2) {
+            top: 8px;
+        }
+        
+        .hamburger-icon span:nth-child(3) {
+            top: 16px;
+        }
+        
+        .mobile-menu-toggle.active .hamburger-icon span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-menu-toggle.active .hamburger-icon span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-toggle.active .hamburger-icon span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        /* Newsletter Form */
+        .newsletter-form {
+            display: flex;
+            margin-top: 10px;
+        }
+        
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            border-right: none;
+        }
+        
+        .newsletter-form button {
+            background-color: #4263eb;
+            color: white;
+            padding: 8px 16px;
+            border: 1px solid #4263eb;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .newsletter-success {
+            color: #4CAF50;
+            font-weight: 500;
+        }
+        
+        /* Feature Card Animation */
+        .feature-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .feature-card.animate-feature {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Header scroll effects */
+        header.scrolled {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+                flex-direction: column;
+            }
+            
+            nav.mobile-menu-active {
+                display: flex;
+            }
+            
+            nav a {
+                margin: 10px 0;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                border-right: 1px solid #ddd;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+            }
+        }
+    `;
+    
+    document.head.appendChild(dynamicStyles);
+});
+    </script>
+</body>
+</html>

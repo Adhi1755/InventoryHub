@@ -1,0 +1,864 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #222;
+    background-color: #f8f9fc;
+}
+
+a {
+    text-decoration: none;
+    color: #4263eb;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5rem;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+
+
+.logo-icon {
+    color: #3563e9;
+    font-size: 1.25rem;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: #333;
+    font-weight: 500;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.login-btn {
+    color: #333;
+    font-weight: 500;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+}
+
+.get-started-btn {
+    background-color: #111827;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hero section */
+.hero {
+    padding: 4rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-badge {
+    background-color: #f0f4ff;
+    color: #4263eb;
+    font-size: 0.875rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #111827;
+}
+
+.hero h1 .highlight {
+    color: #002bd7;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 8px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: wiggle 4s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+    0%   { transform: translate(0px, 0px); }
+      25%  { transform: translate(5px, -5px); }
+      50%  { transform: translate(0px, -10px); }
+      75%  { transform: translate(-5px, -5px); }
+      100% { transform: translate(0px, 0px); }
+  }
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.primary-btn {
+    background-color: #111827;
+    color: white;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    background-color: white;
+    color: #333;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+}
+
+.trial-features {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.feature-icon {
+    color: #22c55e;
+}
+
+/* Main features section */
+.main-headline {
+    text-align: center;
+    padding: 4rem 5rem 2rem;
+}
+
+.main-headline h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.main-headline p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Features grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem 5rem 4rem;
+}
+
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feature-icon-container {
+    width: 3rem;
+    height: 3rem;
+    background-color: #f0f4ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Steps section */
+.steps-section {
+    padding: 4rem 5rem;
+    text-align: center;
+}
+
+.steps-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.steps-section p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.step-card {
+    flex: 1;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.step-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4263eb;
+    margin-bottom: 1rem;
+}
+
+/* FAQ section */
+.faq-section {
+    padding: 2rem 5rem;
+}
+
+.faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: white;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.support-text {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* CTA section */
+.cta-section {
+    background-color: #4263eb;
+    color: white;
+    padding: 4rem 5rem;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-white-btn {
+    background-color: white;
+    color: #4263eb;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-outline-btn {
+    background-color: transparent;
+    color: white;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.trial-text {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #111827;
+    color: white;
+    padding: 4rem 5rem 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.footer-branding {
+    flex: 1.5;
+}
+
+.footer-branding h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-branding p {
+    color: #9ca3af;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.footer-links {
+    display: flex;
+    flex: 2;
+    justify-content: space-between;
+}
+
+.link-column h4 {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.link-column ul {
+    list-style: none;
+}
+
+.link-column ul li {
+    margin-bottom: 0.8rem;
+}
+
+.link-column ul li a {
+    color: #9ca3af;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid #1f2937;
+    font-size: 0.875rem;
+}
+
+.copyright {
+    color: #9ca3af;
+}
+
+.bottom-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.bottom-links a {
+    color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header, .hero, .main-headline, .features-grid, .steps-section, .faq-section, .cta-section, footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    .hero {
+        flex-direction: column;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .steps-container {
+        flex-direction: column;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+a, button, .feature-card, .step-card, .social-icon, .hero-image img {
+    transition: all 0.3s ease;
+}
+
+/* ===== HEADER HOVER EFFECTS ===== */
+
+/* Logo hover effect */
+.logo:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(66, 99, 235, 0.3);
+}
+
+/* Navigation links hover effects */
+nav a {
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #4263eb;
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: #4263eb;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Login button hover */
+.login-btn:hover {
+    color: #4263eb;
+    background-color: rgba(66, 99, 235, 0.05);
+    border-radius: 5px;
+}
+
+/* Get Started button hover */
+.get-started-btn:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.get-started-btn:active {
+    transform: translateY(0);
+}
+
+/* ===== HERO SECTION HOVER EFFECTS ===== */
+
+/* Primary button hover */
+.primary-btn:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+/* Secondary button hover */
+.secondary-btn:hover {
+    background-color: #f5f5f5;
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.secondary-btn:active {
+    transform: translateY(0);
+}
+
+/* Hero image hover effect */
+.hero-image img:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15), 0 15px 15px -5px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== FEATURES GRID HOVER EFFECTS ===== */
+
+/* Feature card hover effect */
+.feature-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.feature-card:hover {
+    background-color: white;
+    border-color: #e5e7eb;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Feature icon hover effect */
+.feature-card:hover .feature-icon-container {
+    background-color: #4263eb;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.feature-card:hover .feature-icon-container svg {
+    stroke: white;
+}
+
+/* ===== STEPS SECTION HOVER EFFECTS ===== */
+
+/* Step card hover effect */
+.step-card {
+    border: 1px solid transparent;
+}
+
+.step-card:hover {
+    border-color: #4263eb;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Step number hover effect */
+.step-card:hover .step-number {
+    transform: scale(1.2);
+    color: #111827;
+}
+
+/* ===== CTA SECTION HOVER EFFECTS ===== */
+
+/* CTA white button hover */
+.cta-white-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cta-white-btn:active {
+    transform: translateY(0);
+}
+
+/* CTA outline button hover */
+.cta-outline-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cta-outline-btn:active {
+    transform: translateY(0);
+}
+
+/* ===== FOOTER HOVER EFFECTS ===== */
+
+/* Footer links hover effect */
+.link-column ul li a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+/* Social icons hover effects */
+.social-icon:hover {
+    background-color: #4263eb;
+    transform: translateY(-3px);
+}
+
+.social-icon:hover svg {
+    stroke: white;
+    transform: scale(1.2);
+}
+
+/* Bottom links hover effect */
+.bottom-links a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* ===== MOBILE MENU HOVER EFFECTS ===== */
+
+.mobile-menu-toggle:hover .hamburger-icon span {
+    background-color: #4263eb;
+}
+
+/* ===== FORM INPUT HOVER/FOCUS EFFECTS ===== */
+
+input:hover, select:hover {
+    border-color: #d1d5db;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #4263eb;
+    box-shadow: 0 0 0 3px rgba(66, 99, 235, 0.2);
+}
+
+/* ===== MODAL HOVER EFFECTS ===== */
+
+.close-modal:hover {
+    color: #4263eb;
+    transform: scale(1.1);
+}
+
+.modal button.submit-btn {
+    background-color: #4263eb;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.modal button.submit-btn:hover {
+    background-color: #3652c7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 99, 235, 0.2);
+}
+
+/* ===== NEWSLETTER FORM HOVER EFFECTS ===== */
+
+.newsletter-form input:hover {
+    border-color: #d1d5db;
+}
+
+.newsletter-form input:focus {
+    border-color: #4263eb;
+    box-shadow: 0 0 0 3px rgba(66, 99, 235, 0.2);
+}
+
+.newsletter-form button:hover {
+    background-color: #3652c7;
+    transform: translateY(-2px);
+}
+
+/* ===== LOADING STATE ANIMATIONS ===== */
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.is-loading {
+    animation: pulse 1.5s infinite;
+}
+
+/* ===== FEATURE BADGE PULSE EFFECT ===== */
+
+@keyframes badgePulse {
+    0% { box-shadow: 0 0 0 0 rgba(66, 99, 235, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(66, 99, 235, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(66, 99, 235, 0); }
+}
+
+.hero-badge {
+    animation: badgePulse 2s infinite;
+}
+
+/* ===== SCROLL REVEAL ANIMATIONS ===== */
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Adding delay to staggered animations */
+.features-grid .feature-card:nth-child(2) { transition-delay: 0.1s; }
+.features-grid .feature-card:nth-child(3) { transition-delay: 0.2s; }
+.features-grid .feature-card:nth-child(4) { transition-delay: 0.3s; }
+.features-grid .feature-card:nth-child(5) { transition-delay: 0.4s; }
+.features-grid .feature-card:nth-child(6) { transition-delay: 0.5s; }
+.features-grid .feature-card:nth-child(7) { transition-delay: 0.6s; }
+.features-grid .feature-card:nth-child(8) { transition-delay: 0.7s; }
+
+.steps-container .step-card:nth-child(2) { transition-delay: 0.1s; }
+.steps-container .step-card:nth-child(3) { transition-delay: 0.2s; }
+.steps-container .step-card:nth-child(4) { transition-delay: 0.3s; }
+
+/* ===== IMAGE HOVER EFFECTS ===== */
+
+/* Add subtle zoom effect to images on hover */
+img.hover-zoom {
+    transition: transform 0.5s ease;
+}
+
+img.hover-zoom:hover {
+    transform: scale(1.05);
+}
+
+/* ===== CUSTOM CHECKBOX HOVER EFFECTS ===== */
+
+.custom-checkbox:hover {
+    border-color: #4263eb;
+}
+
+/* ===== TOOLTIP HOVER EFFECTS ===== */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #111827;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #111827 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ===== PULSING DOT EFFECT (for "new" features) ===== */
+
+.pulse-dot {
+    position: relative;
+}
+
+.pulse-dot::after {
+    content: '';
+    background-color: #22c55e;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== FLOATING ELEMENT ANIMATIONS ===== */
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.float-animation {
+    animation: float 4s ease-in-out infinite;
+}

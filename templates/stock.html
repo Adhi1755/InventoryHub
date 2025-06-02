@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>InventoryHub - Smart Inventory Management Made Simple</title>
+<link rel="stylesheet" href="{{url_for('static',filename='stock_style.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="main-content">
+    <div class="header">
+        <h1 class="title">Stock Management</h1>
+        <div class="header-right">
+            <div class="notification">
+                <i class="fas fa-bell"></i>
+                <div class="notification-dot"></div>
+            </div>
+            <div class="profile">
+                <img src="/api/placeholder/36/36" alt="Profile">
+            </div>
+        </div>
+    </div>
+    <p class="subtitle">Monitor and update your inventory levels</p>
+<div class="stock-management">
+    <table class="stock-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>ID</th>
+                <th>Current Stock</th>
+                <th>Update Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr data-product-id="{{ product.id }}">
+                <td>{{ product.name }}</td>
+                <td>{{ product.id }}</td>
+                <td>
+                    {% if product.quantity_in_stock == 0 %}
+                        <span class="out-of-stock">Out of stock</span>
+                    {% else %}
+                        {{ product.quantity_in_stock }}
+                    {% endif %}
+                </td>
+                <td>
+                    <form action="{{ url_for('update_stock') }}" method="POST">
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn decrease">−</button>
+                            <input type="text" class="quantity-input" name="new_quantity" value="{{ product.quantity_in_stock }}">
+                            <button type="button" class="quantity-btn increase">+</button>
+                            <button type="submit" class="update-btn">Update</button>
+                        </div>
+                    </form>                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>        
+    </table>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.quantity-btn.decrease').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('.quantity-input');
+                let value = parseInt(input.value) || 0;
+                if (value > 0) input.value = value - 1;
+            });
+        });
+    
+        document.querySelectorAll('.quantity-btn.increase').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('.quantity-input');
+                let value = parseInt(input.value) || 0;
+                input.value = value + 1;
+            });
+        });
+    });
+</script>
+    
+    
+{% endblock %}

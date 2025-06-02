@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>InventoryHub - Smart Inventory Management Made Simple</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='orders_style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+<div class="content-area">
+  <div class="main-content">
+    <div class="header">
+      <div>
+        <h1 class="title">Orders</h1>
+        <p class="subtitle">Manage customer orders and track fulfillment status</p>
+      </div>
+      <div class="header-right">
+        <div class="notification">
+          <i class="fas fa-bell"></i>
+          <div class="notification-dot"></div>
+        </div>
+        <div class="profile">
+          <img src="/api/placeholder/36/36" alt="Profile">
+        </div>
+      </div>
+    </div>
+
+    <div class="actions-bar">
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" class="search-input" placeholder="Search order ID...">
+      </div>
+      
+      <div class="filter-dropdown">
+        All Statuses
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      
+  
+    </div>
+
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Items</th>
+          <th>Total Amount</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+  {% for order in orders %}
+  <tr>
+    <td class="order-id">#{{ order.id }}</td>
+    <td>{{ order.date_ordered.strftime('%d/%m/%Y') }}</td>
+    <td>
+      <span class="status-badge status-{{ order.status.lower() }}">{{ order.status }}</span>
+    </td>
+    <td>{{ order.order_items|length }}</td>
+    <td>{{ "%.2f"|format(order.total_amount()) }}₹</td>
+    <td class="action-icons">
+    <i class="far fa-edit action-icon edit-order-btn"
+       data-id="{{ order.id }}"
+       data-customer="{{ order.customer_name }}"
+       data-status="{{ order.status }}">
+    </i>
+
+    <form action="{{ url_for('delete_order', order_id=order.id) }}" method="POST" style="display:inline;">
+        <button type="submit" style="border:none; background:none; cursor:pointer;" onclick="return confirm('Are you sure you want to delete this order?');">
+            <i class="far fa-trash-alt action-icon"></i>
+        </button>
+    </form>
+</td>
+  {% else %}
+  <tr>
+    <td colspan="6" style="text-align:center;">No orders found</td>
+  </tr>
+  {% endfor %}
+</tbody>
+    </table>
+  </div>
+</div>
+<!-- Edit Order Modal -->
+<div class="modal fade" id="editOrderModal" tabindex="-1" role="dialog" aria-labelledby="editOrderModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form method="POST" action="" id="edit-order-form">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Order</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="order_id" id="edit-order-id">
+          <div class="form-group">
+            <label>Customer Name</label>
+            <input type="text" class="form-control" name="customer_name" id="edit-customer-name">
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select class="form-control" name="status" id="edit-status">
+              <option>Pending</option>
+              <option>Shipped</option>
+              <option>Delivered</option>
+              <option>Cancelled</option>
+              <option>Completed</option> 
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS Bundle (includes Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.edit-order-btn').forEach(button => {
+    button.addEventListener('click', function () {
+      const orderId = this.getAttribute('data-id');
+      const customerName = this.getAttribute('data-customer');
+      const status = this.getAttribute('data-status');
+
+      document.getElementById('edit-order-id').value = orderId;
+      document.getElementById('edit-customer-name').value = customerName;
+      document.getElementById('edit-status').value = status;
+
+      document.getElementById('edit-order-form').action = `/edit_order/${orderId}`;
+
+      // Bootstrap modal show
+      $('#editOrderModal').modal('show');
+    });
+  });
+});
+</script>
+{% endblock %}

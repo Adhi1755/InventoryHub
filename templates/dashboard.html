@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<title>InventoryHub - Smart Inventory Management Made Simple</title>
+{% endblock %}
+{% block body %}
+<div class="main-content">
+    <div class="header">
+        <h1 class="title">Dashboard</h1>
+        <div class="header-right">
+            <div class="notification">
+                <i class="fas fa-bell"></i>
+                <div class="notification-dot"></div>
+            </div>
+            <div class="profile">
+                <img src="/api/placeholder/36/36" alt="Profile">
+            </div>
+        </div>
+    </div>
+    
+    <p class="subtitle">Overview of your inventory system</p>
+    
+    <div class="stats-cards">
+        <div class="stat-card">
+            <div class="stat-content">
+                <h3>Total Products</h3>
+                <p class="stat-value">{{ total_products }}</p>
+            </div>
+            <div class="stat-icon products-icon">
+                <i class="fas fa-boxes-stacked"></i>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-content">
+                <h3>Out of Stock</h3>
+                <p class="stat-value">{{ out_of_stock }}</p>
+            </div>
+            <div class="stat-icon out-of-stock-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-content">
+                <h3>Total Orders</h3>
+                <p class="stat-value">{{ total_orders - 1 }}</p>
+            </div>
+            <div class="stat-icon orders-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-content">
+                <h3>Total Revenue</h3>
+                <p class="stat-value">₹{{ '%.2f'|format(total_revenue) }}</p>
+            </div>
+            <div class="stat-icon revenue-icon">
+                <i class="fas fa-money-bill-wave"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="charts-container">
+        <div class="chart-card">
+            <h3>Monthly Sales</h3>
+            <p>Sales performance over the last 6 months</p>
+            <canvas id="monthlySalesChart"></canvas>
+        </div>
+        
+        <div class="chart-card">
+            <h3>Stock Trends</h3>
+            <p>Stock levels by category</p>
+            <canvas id="stockTrendChart"></canvas>
+        </div>
+    </div>
+
+    <div class="recent-orders">
+        <div class="section-header">
+            <h3>Recent Orders</h3>
+            <p>Latest customer orders</p>
+        </div>
+        
+        <table id="ordersTable">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if latest_orders %}
+                    {% for order in latest_orders %}
+                    <tr>
+                        <td>{{ order.customer_name }}</td>
+                        <td>{{ order.date_ordered.strftime('%Y-%m-%d %H:%M') }}</td>
+                        <td>{{ '%.2f'|format(order.total_amount()) }}</td>
+                        <td><span class="status {{ order.status|lower }}">{{ order.status }}</span></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+        <tr>
+            <td colspan="4" style="text-align: center;">No orders found.</td>
+        </tr>
+    {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="bottom-widgets">
+        <div class="widget">
+            <div class="widget-icon analytics-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Quick Analytics</h3>
+            <p>Monitor key metrics</p>
+            
+            <div class="metrics">
+                <div class="metric">
+                    <span>Avg. Order Value</span>
+                    <span>₹{{ '%.2f'|format(avg_order_value) }}</span>
+                </div>
+                <div class="metric">
+                    <span>Monthly Growth</span>
+                    <span>{{ '%.2f'|format(monthly_growth) }}%</span>
+                </div>
+                <div class="metric">
+                    <span>Top Category</span>
+                    <span>{{ top_category_name }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget">
+            <div class="widget-icon fulfillment-icon">
+                <i class="fas fa-truck"></i>
+            </div>
+            <h3>Order Fulfillment</h3>
+            <p>Pending actions</p>
+            
+            <div class="metrics">
+                <div class="metric">
+                    <span>Orders to Process</span>
+                    <span class="count">{{ orders_to_process }}</span>
+                </div>
+                <div class="metric">
+                    <span>Ready for Shipping</span>
+                    <span class="count">{{ ready_for_shipping }}</span>
+                </div>
+                <div class="metric">
+                    <span>Awaiting Delivery</span>
+                    <span class="count">{{ awaiting_delivery }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget">
+            <div class="widget-icon health-icon">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <h3>Inventory Health</h3>
+            <p>Stock levels overview</p>
+            
+            <div class="metrics">
+                <div class="metric">
+                    <span>Overall Stock Level</span>
+                    <span>{{ '%.2f'|format(stock_percentage_capped) }}%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: {{ stock_percentage_capped }}%"></div>
+                </div>
+                <div class="metric">
+                    <span>Low Stock</span>
+                    <span class="warning">{{ out_of_stock }} items</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Monthly Sales Chart
+    // const monthlySalesCtx = document.getElementById('monthlySalesChart').getContext('2d');
+    
+    // Data based on the inserted orders and transactions (July 2024 - November 2024)
+    // const monthlyLabels = ['July 2024', 'August 2024', 'September 2024', 'October 2024', 'November 2024'];
+    
+    // Monthly sales data calculated from inserted transactions
+    // July: ~1,500, August: ~3,800, September: ~4,200, October: ~5,800, November: ~2,800
+    // const monthlySalesData = [1547.12, 3821.45, 4235.67, 5789.23, 2834.56];
+
+    const monthlySalesCtx = document.getElementById('monthlySalesChart').getContext('2d');
+
+    const monthlyLabels = {{ monthly_labels | tojson }};
+    const monthlySalesData = {{ monthly_sales | tojson }};
+
+    const monthlySalesChart = new Chart(monthlySalesCtx, {
+        type: 'line',
+        data: {
+            labels: monthlyLabels,
+            datasets: [{
+                label: 'Sales',
+                data: monthlySalesData,
+                fill: false,
+                borderColor: 'rgba(53, 99, 233, 1)',
+                backgroundColor: 'rgba(53, 99, 233, 0.4)',
+                tension: 0.3, // smooth curve
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return '$' + (value / 1000).toFixed(1) + 'k';
+                        }
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return 'Sales: $' + context.parsed.y.toLocaleString('en-US', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            });
+                        }
+                    }
+                },
+                legend: {
+                    display: true
+                }
+            }
+        }
+    });
+
+
+    // Optional: Add click event to show detailed breakdown
+    monthlySalesChart.options.onClick = function(event, elements) {
+        if (elements.length > 0) {
+            const monthIndex = elements[0].index;
+            const monthName = monthlyLabels[monthIndex];
+            const salesAmount = monthlySalesData[monthIndex];
+            
+            console.log(`${monthName}: $${salesAmount.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}`);
+        }
+    };
+
+        
+        // Stock Trend Chart
+        const stockTrendCtx = document.getElementById('stockTrendChart').getContext('2d');
+        
+        const stockLabels = {{ stock_labels|tojson }};
+        const stockData = {{ stock_values|tojson }};
+        
+        const stockTrendChart = new Chart(stockTrendCtx, {
+            type: 'bar',
+            data: {
+                labels: stockLabels,
+                datasets: [{
+                    label: 'Stock Levels',
+                    data: stockData,
+                    backgroundColor: 'rgba(53, 99, 233, 1)',
+                    borderColor: 'rgba(53, 99, 233, 0.4)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 10
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}
