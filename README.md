@@ -1,4 +1,3 @@
-# InventoryHub
 # Inventory Management System
 
 A comprehensive web-based inventory management system built with Flask that helps businesses track their products, manage orders, monitor stock levels, and analyze sales performance through an intuitive dashboard.
@@ -68,8 +67,8 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/inventory-management-system.git
-   cd inventory-management-system
+   git clone https://github.com/Adhi1755/inventoryHubgit
+   cd inventoryHub
    ```
 
 2. **Create a virtual environment**
@@ -114,107 +113,3 @@ Before you begin, ensure you have the following installed:
 
 7. **Access the application**
    Open your web browser and navigate to `http://localhost:5000`
-
-### Option 2: Download ZIP
-
-1. **Download the ZIP file** from the GitHub repository
-2. **Extract** the files to your desired location
-3. **Follow steps 2-7** from Option 1 above
-
-## 🖥️ Usage
-
-1. **Create Account**: Register a new account on the login page
-2. **Login**: Access your dashboard with your credentials
-3. **Dashboard**: View your sales charts, stock levels, and recent orders
-4. **Add Products**: Navigate to Products page to add your inventory items
-5. **Manage Orders**: Use the Orders page to process and track orders
-6. **Monitor Stock**: Check stock levels and adjust quantities as needed
-7. **Settings**: Update your account information and preferences
-
-## 📁 Project Structure
-
-```
-inventory-management-system/
-├── app.py                 # Main Flask application
-├── requirements.txt       # Python dependencies
-├── config.py             # Configuration settings
-├── models.py             # Database models
-├── forms.py              # Flask-WTF forms
-├── routes/               # Route handlers
-│   ├── auth.py          # Authentication routes
-│   ├── dashboard.py     # Dashboard routes
-│   ├── products.py      # Product management routes
-│   ├── orders.py        # Order management routes
-│   └── settings.py      # Settings routes
-├── templates/            # HTML templates
-│   ├── base.html        # Base template
-│   ├── dashboard.html   # Dashboard page
-│   ├── products.html    # Products page
-│   ├── orders.html      # Orders page
-│   └── settings.html    # Settings page
-├── static/              # Static files
-│   ├── css/            # Stylesheets
-│   ├── js/             # JavaScript files
-│   └── images/         # Image assets
-└── migrations/          # Database migrations
-```
-
-## 🔧 Configuration
-
-### Database Configuration
-- **SQLite** (default): For development and small-scale deployment
-- **PostgreSQL**: For production environments
-
-### Environment Variables
-```env
-FLASK_APP=app.py
-FLASK_ENV=production  # Change to 'development' for development
-SECRET_KEY=your-very-secret-key
-DATABASE_URL=your-database-url
-```
-
-## 🚀 Deployment
-
-### Local Development
-```bash
-flask run --debug
-```
-
-### Production Deployment
-1. Set `FLASK_ENV=production`
-2. Use a proper WSGI server like Gunicorn
-3. Configure a reverse proxy (Nginx)
-4. Set up a production database (PostgreSQL)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🐛 Bug Reports & Feature Requests
-
-If you encounter any bugs or have feature requests, please create an issue on the GitHub repository.
-
-## 📞 Support
-
-For support and questions:
-- Create an issue on GitHub
-- Check the documentation
-- Review existing issues for solutions
-
-## 🎉 Acknowledgments
-
-- Flask community for the excellent framework
-- Contributors who helped improve this project
-- Open source libraries that made this project possible
-
----
-
-**Made with ❤️ for efficient inventory management**
